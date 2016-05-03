@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+bin = path.dirname(process.argv[2])
+
+flatten   = require('../flatten');
+argv      = require('argh').argv;
+minimatch = require('minimatch');
+
+//TODO save masterhash to a file
+
+if (argv.ignore) {
+	ignore = argv.ignore.split(',');
+} else {
+	try {
+		ignore = fs.readFileSync('.bucketignore'), 'utf-8').split('\n');
+	}
+	catch (fileReadError) {
+		ignore = [];
+	}
+}
+
+if (argv.accept) {
+	accept = argv.accept.split(',');
+} else {
+	try {
+		accept = fs.readFileSync('.bucketaccept'), 'utf-8').split('\n');
+	}
+	catch (fileReadError) {
+		accept = [];
+	}
+}
+
+options = argv.duplicate ? "duplicate" : "";
+
+source = path.resolve(argv.argv[0]);
+dest = path.resolve(argv.argv[1]);
+
+flatten(source, dest, accept, ignore, options);
