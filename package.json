@@ -1,6 +1,6 @@
 {
   "name": "flatten-dir",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple utility to flatten subdirectories into one master directory.",
   "main": "bin/flatten",
   "bin": {
@@ -29,10 +29,8 @@
   "dependencies": {
     "argh": "^0.1.4",
     "async": "^2.0.0-rc.3",
-    "crypto-md5": "^1.0.0"
+    "minimatch": "^3.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "chai": "^3.5.0"
   }
 }
